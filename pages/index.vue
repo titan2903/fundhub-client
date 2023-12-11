@@ -23,7 +23,7 @@
               </button>
             </div>
             <div class="w-1/2 flex justify-center">
-              <img src="/hero-image@2x.png" alt="crowdfunding project" />
+              <img src="/hero-image@2x.png" alt="fundhub project" />
             </div>
           </div>
         </div>
