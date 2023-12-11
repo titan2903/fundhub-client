@@ -1,7 +1,8 @@
 export default {
   // Setup port server
   server: {
-    port: 3010 // default: 3000
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 3010, // default: 3000
   },
 
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -12,7 +13,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'titan-crowdfunding',
+    title: 'fundhub',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -86,7 +87,7 @@ export default {
     webpack5: true,
   },
   generate: {
-    fallback: true
+    fallback: true,
   },
   buildDir: 'dist',
 }

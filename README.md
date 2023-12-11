@@ -1,4 +1,4 @@
-# crowdfunding-client
+# fundhub-client
 
 ## Build Setup
 
@@ -14,20 +14,18 @@
     npm run dev
 ```
 
-* Build for production and launch server
+* Build for production, generate static project and launch server
 
 ```sh
     npm run build
 ```
 
 ```sh
-    npm run start
+    npm run generate
 ```
 
-* Generate static project
-
 ```sh
-    npm run generate
+    npm run start
 ```
 
 ## Web Address

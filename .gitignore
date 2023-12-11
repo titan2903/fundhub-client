@@ -89,5 +89,5 @@ sw.*
 # Vim swap files
 *.swp
 
-# Local Netlify folder
-.netlify
+# Nitro
+.output
