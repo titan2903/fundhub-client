@@ -46,7 +46,6 @@ pipeline {
                     echo "Post Success"
                     discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:latest to DockerHub Status: Success", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
                 }
-
                 failure {
                     echo "Post Failure"
                     discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:latest to DockerHub Status: Failure", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
