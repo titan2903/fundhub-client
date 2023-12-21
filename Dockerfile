@@ -4,13 +4,18 @@ FROM node:16-alpine AS build
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy all files from the build context to the working directory in the container
+# Copy only the necessary files needed for npm install to leverage Docker layer caching
+COPY package*.json ./
+COPY nuxt.config.js ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
 COPY . .
 
-# Install dependencies, clean the npm cache, build, and generate static files
-RUN npm install && \
-    npm cache clean --force && \
-    npm run build && \
+# Build and generate static files
+RUN npm run build && \
     npm run generate
 
 # Use a new base image for the final stage
@@ -19,8 +24,8 @@ FROM node:16-alpine
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy all files from the build stage to the working directory in the final image
-COPY --from=build /app .
+# Copy only the necessary files from the build stage to the final image
+COPY --from=build /app ./
 
 # Set environment variable Host
 ENV HOST 0.0.0.0
