@@ -55,7 +55,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: "https://mighty-taiga-99362.herokuapp.com",
+    baseURL: process.env.BASE_URL || 'http://localhost:8000',
     proxyHeaders: false,
     credentials: false
   },
