@@ -51,13 +51,12 @@ export default {
     '@nuxtjs/pwa',
     // https://auth.nuxtjs.org/
     '@nuxtjs/auth',
+    '@nuxtjs/dotenv',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.BASE_URL || 'http://localhost:7000',
-    // proxyHeaders: false,
-    // credentials: false
   },
 
   auth: {
