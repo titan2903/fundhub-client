@@ -51,13 +51,14 @@ export default {
     '@nuxtjs/pwa',
     // https://auth.nuxtjs.org/
     '@nuxtjs/auth',
+    '@nuxtjs/dotenv',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: "https://mighty-taiga-99362.herokuapp.com",
-    proxyHeaders: false,
-    credentials: false
+    baseURL: process.env.BASE_URL || 'http://localhost:6000',
+    // proxyHeaders: false,
+    // credentials: false
   },
 
   auth: {

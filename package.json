@@ -8,11 +8,11 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "deploy": "nuxt build && nuxt generate"
-
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.2",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3"
