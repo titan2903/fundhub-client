@@ -191,11 +191,14 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
+  async asyncData({ app }) {
     console.log('=== TEST DEBUG ===:', process.env.TEST_DEBUG);
     console.log('=== Environment variables ===:', process.env.PORT);
     console.log('==== BASE_URL ====: ' + process.env.BASE_URL)
-    const campaigns = await $axios.$get('/api/v1/campaigns')
+    // const campaigns = await $axios.$get('/api/v1/campaigns')
+    // Use native fetch
+    const response = await fetch(`${process.env.BASE_URL}/api/v1/campaigns`);
+    const campaigns = await response.json();
     return { campaigns }
   }
 }
