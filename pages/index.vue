@@ -196,9 +196,6 @@ export default {
     console.log('=== Environment variables ===:', process.env.PORT);
     console.log('==== BASE_URL ====: ' + process.env.BASE_URL)
     const campaigns = await $axios.$get('/api/v1/campaigns')
-    // Use native fetch
-    // const response = await fetch(`${process.env.BASE_URL}/api/v1/campaigns`);
-    // const campaigns = await response.json();
     return { campaigns }
   }
 }
