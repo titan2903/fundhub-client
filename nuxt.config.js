@@ -3,7 +3,6 @@ export default {
   server: {
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 3010, // default: 3000
-    baseURL: process.env.BASE_URL,
   },
 
   publicRuntimeConfig: {
