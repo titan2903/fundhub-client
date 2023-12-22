@@ -190,37 +190,13 @@
 </template>
 
 <script>
-// export default {
-//   async asyncData({ $axios }) {
-//     console.log('=== TEST DEBUG ===:', process.env.TEST_DEBUG);
-//     console.log('=== Environment variables ===:', process.env.PORT);
-//     console.log('==== BASE_URL ====: ' + process.env.BASE_URL)
-//     const campaigns = await $axios.$get('/api/v1/campaigns')
-//     return { campaigns }
-//   }
-// }
 export default {
-  async asyncData({ req }) {
+  async asyncData({ $axios }) {
     console.log('=== TEST DEBUG ===:', process.env.TEST_DEBUG);
     console.log('=== Environment variables ===:', process.env.PORT);
-    console.log('==== BASE_URL ====: ' + process.env.BASE_URL);
-
-    const baseURL = process.env.BASE_URL; // Default to localhost if BASE_URL is not set
-    const apiUrl = `${baseURL}/api/v1/campaigns`;
-
-    try {
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const campaigns = await response.json();
-      return { campaigns };
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      return { campaigns: [] }; // Handle the error as needed
-    }
-  },
-};
+    console.log('==== BASE_URL ====: ' + process.env.BASE_URL)
+    const campaigns = await $axios.$get('/api/v1/campaigns')
+    return { campaigns }
+  }
+}
 </script>

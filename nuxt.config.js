@@ -5,10 +5,6 @@ export default {
     port: process.env.PORT || 3010, // default: 3000
   },
 
-  publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL,
-  },
-
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -60,7 +56,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://fundhubdev.api.local',
+    baseURL: process.env.BASE_URL || 'http://fundhubdev.api.local',
     // baseURL: process.env.BASE_URL,
   },
 
