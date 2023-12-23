@@ -75,7 +75,6 @@ export default {
             'Content-Type' : 'multipart/form-data'
           }
         })
-        console.log(response)
 
         this.$router.push({ path: '/register-success' })
       } catch (error) {

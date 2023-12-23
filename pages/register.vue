@@ -101,7 +101,6 @@ export default {
     async userRegister() {
       try {
         let response = await this.$axios.post('/api/v1/users', this.register)
-        console.log(response.data.data.token, "==== data response ====")
         this.$auth.setUserToken(response.data.data.token).then(()=> this.$router.push({ path: '/upload' }))
       } catch (error) {
         console.error(error)

@@ -130,7 +130,6 @@ export default {
           name: 'dashboard-projects-id',
           params: {id: response.data.id}
         })
-        console.log(response)
       } catch (error) {
         console.error(error)
       }

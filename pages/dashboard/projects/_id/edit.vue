@@ -125,7 +125,6 @@ export default {
           goal_amount: this.campaign.data.goal_amount,
           perks: this.campaign.data.perks,
         })
-        console.log(response)
       } catch (error) {
         console.error(error)
       }

@@ -192,7 +192,6 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    console.log('==== BASE_URL ====: ' + process.env.BASE_URL)
     const campaigns = await $axios.$get('/api/v1/campaigns')
     return { campaigns }
   }
