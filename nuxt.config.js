@@ -56,7 +56,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.BASE_URL || 'http://localhost:6000',
+    baseURL: process.env.BASE_URL || 'http://fundhub.api.local',
     // proxyHeaders: false,
     // credentials: false
   },
