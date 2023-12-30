@@ -25,6 +25,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                echo 'ENV_NODE=staging' > .env
                 echo "Building Apps"
                 sh "docker build -t $DOCKER_USERNAME/fundhub-client-dev:${BUILD_NUMBER} ."
             }
