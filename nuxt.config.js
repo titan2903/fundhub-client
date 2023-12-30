@@ -56,7 +56,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.NODE_ENV === "staging" ? 'http://fundhubdev.api.local' : 'http://fundhub.api.local',
+    baseURL: process.env.ENV_NODE === "staging" ? 'http://fundhubdev.api.local' : 'http://fundhub.api.local',
   },
 
   // privateRuntimeConfig: {
