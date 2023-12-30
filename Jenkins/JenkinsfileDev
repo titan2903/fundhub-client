@@ -25,16 +25,17 @@ pipeline {
 
         stage('Build') {
             // steps {
+            //     touch .env
             //     echo 'ENV_NODE=staging' > .env
             //     echo "Building Apps"
             //     sh "docker build -t $DOCKER_USERNAME/fundhub-client-dev:${BUILD_NUMBER} ."
             // }
 
-            steps {
+             steps {
                 script {
                     writeFile file: '.env', text: 'ENV_NODE=staging'
                     echo 'Building Apps'
-                    sh "docker build --build-arg NODE_ENV=$(cat .env) -t $DOCKER_USERNAME/fundhub-client-dev:${BUILD_NUMBER} ."
+                    sh "docker build -t $DOCKER_USERNAME/fundhub-client-dev:${BUILD_NUMBER} ."
                 }
             }
         }
