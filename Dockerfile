@@ -27,8 +27,8 @@ WORKDIR /app
 COPY --from=build /app ./
 
 # Set environment variable Host
-ENV HOST 0.0.0.0
-# ENV NODE_ENV=staging
+ENV NODE_ENV=staging \
+    HOST=0.0.0.0
 
 # Expose port 3010 to the outside world
 EXPOSE 3010
