@@ -151,7 +151,6 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         })
-        console.log(response)
         this.load()
         this.selectedFiles = undefined
       } catch (error) {

@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Copy only the necessary files needed for npm install to leverage Docker layer caching
 COPY package*.json ./
-COPY nuxt.config.js ./
 
 # Install dependencies
 RUN npm install

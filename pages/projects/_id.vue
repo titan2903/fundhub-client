@@ -149,7 +149,6 @@ export default {
       try {
         let response = await this.$axios.post('/api/v1/transactions', this.transactions)
         window.location = response.data.data.payment_url
-        console.log(response)
       } catch (error) {
         console.error(error)
       }
