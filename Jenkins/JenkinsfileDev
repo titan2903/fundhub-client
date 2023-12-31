@@ -26,7 +26,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    writeFile file: '.env', text: 'ENV_NODE=staging'
+                    writeFile file: '.env', text: 'NODE_ENV=staging'
                     sh "cat .env"
                     echo 'Building Apps'
                     sh "docker build -t $DOCKER_USERNAME/fundhub-client-dev:${BUILD_NUMBER} ."
@@ -34,53 +34,30 @@ pipeline {
             }
         }
 
-        stage('Push to DockerHub') {
+        stage('Push to Registry') {
              steps {
-                echo "Pushing to DockerHub"
+                echo "Pushing to Registry"
                 sh "docker login -u $DOCKER_USERNAME -p ${DOCKER_PASSWORD}"
                 sh "docker push $DOCKER_USERNAME/fundhub-client-dev:${BUILD_NUMBER}"
-            }
-
-            post {
-                aborted {
-                    echo "Post Aborted"
-                    discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to DockerHub Status: Aborted", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
-                }
-                success {
-                    echo "Post Success"
-                    discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to DockerHub Status: Success", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
-                }
-                failure {
-                    echo "Post Failure"
-                    discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to DockerHub Status: Failure", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo "Deploying Service"
-                // Delete all docker images after push to DockerHub
                 sh 'docker rmi $(docker images -q)'
             }
         }
-
     }
     
     post {
         aborted {
             echo "Post Aborted"
-            discordSend description: "Fundhub Client Deployment", footer: "Fundhub Client Staging Deployment Status: Aborted", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
+            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Aborted", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
         }
 
         success {
             echo "Post Success"
-            discordSend description: "Fundhub Client Deployment", footer: "Fundhub Client Staging Deployment Status: Success", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
+            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Success", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
         }
-        
+
         failure {
             echo "Post Failure"
-            discordSend description: "Fundhub Client Deployment", footer: "Fundhub Client Staging Deployment Status: Failure", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
+            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Failure", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
         }
     }
 }
