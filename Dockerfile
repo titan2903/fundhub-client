@@ -29,9 +29,6 @@ WORKDIR /app
 # Copy only the necessary files from the build stage to the final image
 COPY --from=build /app ./
 
-# Copy the .env file
-COPY --from=build .env .env
-
 # Set environment variable Host
 ENV HOST 0.0.0.0
 
