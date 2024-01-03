@@ -56,7 +56,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.ENV === "staging" ? 'http://fundhubdev.api.titanio.xyz' : 'http://fundhub.api.titanio.xyz',
+    baseURL: process.env.ENV === "staging" ? 'https://fundhubdev.api.titanio.xyz' : 'https://fundhub.api.titanio.xyz',
   },
 
   auth: {
