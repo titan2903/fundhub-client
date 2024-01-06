@@ -2,7 +2,7 @@ export default {
   // Setup port server
   server: {
     host: process.env.HOST || 'localhost',
-    port: process.env.PORT || 3010, // default: 3010
+    port: process.env.PORT || 3010,
   },
 
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
