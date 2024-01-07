@@ -192,7 +192,7 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    console.log('=== Environment variables ===:', process.env.PORT)
+    console.log('ENV PORT:', process.env.PORT);
     const campaigns = await $axios.$get('/api/v1/campaigns')
     return { campaigns }
   }
