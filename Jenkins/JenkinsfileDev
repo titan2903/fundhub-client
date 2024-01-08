@@ -4,7 +4,7 @@ pipeline {
     }
 
     environment {
-        WEBOOK_DISCORD_URL = credentials('WEBOOK_DISCORD_URL')
+        WEBHOOK_URL_DISCORD = credentials('WEBHOOK_URL_DISCORD')
         DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
     }
@@ -47,17 +47,17 @@ pipeline {
     post {
         aborted {
             echo "Post Aborted"
-            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Aborted", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBOOK_DISCORD_URL"
+            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Aborted", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
         }
 
         success {
             echo "Post Success"
-            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Success", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBOOK_DISCORD_URL"
+            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Success", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
         }
 
         failure {
             echo "Post Failure"
-            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Failure", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBOOK_DISCORD_URL"
+            discordSend description: "Push Docker Image", footer: "Push image fundhub-client-dev:${BUILD_NUMBER} to Registry. Status: Failure", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: "$WEBHOOK_URL_DISCORD"
         }
     }
 }
