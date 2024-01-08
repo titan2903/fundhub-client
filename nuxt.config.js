@@ -13,7 +13,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'fundhub',
+    title: 'fundhub v1',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -56,7 +56,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.ENV === "staging" ? 'https://fundhubdevapi.titanio.xyz' : 'https://fundhubapi.titanio.xyz',
+    // baseURL: process.env.ENV === "staging" ? 'https://fundhubdevapi.titanio.xyz' : 'https://fundhubapi.titanio.xyz',
+    baseURL:'http://fundhubdev.api.local',
   },
 
   auth: {
